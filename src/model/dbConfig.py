@@ -4,4 +4,4 @@ class DbConfig:
         self.password='yourStrong(!)Password'
         self.host='localhost'
         self.port='1433'
-        self.database= 'master'
+        self.database= 'FCM'
