@@ -1,16 +1,10 @@
 from queryDatabase import QueryDb
 from readCsvFile import ReadCsvFile
+from compareQueryAndFile import CompareQueryAndFile
 
 
-result = QueryDb("SELECT * FROM ValueTable")
+query = QueryDb("SELECT ValueType, ValueDescription, MoneyValue FROM ValueTable")
 
-print(result.executeQuery())
+file = ReadCsvFile("csv/fcm.csv")
 
-csvReader = ReadCsvFile("csv/fcm.csv").read_file()
-
-print(csvReader.to_string())
-
-print(csvReader.groupby('ValueType')[['MoneyValue']].sum())
-
-print(csvReader.groupby('ValueType').agg({'ValueType':'count', 
-                           'MoneyValue':'sum'}))
+CompareQueryAndFile(query, file).execute_compare()
